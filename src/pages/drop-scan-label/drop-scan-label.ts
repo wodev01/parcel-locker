@@ -41,10 +41,6 @@ export class DropScanLabelPage {
       cssClass: className
     });
 
-    this.toast.onDidDismiss(() => {
-      console.log('Dismissed toast');
-    });
-
     this.toast.present();
   }
 
@@ -55,7 +51,6 @@ export class DropScanLabelPage {
     });
 
     this.loading.present();
-
   }
 
   fnCheckScanCode(scanLabelCode) {
@@ -64,14 +59,15 @@ export class DropScanLabelPage {
     if (this.toast) {
       this.toast.dismiss();
     }
-
+    console.info('%c Sending API call with scan label code for check parcel is available with scan label in database', 'background: #2B65EC; color: #ffffff');
     this.scanLabelService.getLabel(scanLabelCode)
       .subscribe(
         data => {
           this.storage.set('SLOT', JSON.stringify(data.slot));
+          console.info('%c Scan code successfully check and Slot ' + data.slot.slotNumber + 'Found and Store slot information', 'background: #2B65EC; color: #ffffff');
           this.isCodeChecking = false;
           this.loading.dismiss();
-          console.info("Scan code successfully check and Slot Found");
+          console.info('%c Door Open for slot ' + data.slot.slotNumber + '.', 'background: #2B65EC; color: #ffffff');
           this.navCtrl.push(SlotPage);
         },
         error => {

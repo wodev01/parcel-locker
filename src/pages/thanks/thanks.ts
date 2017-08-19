@@ -18,10 +18,6 @@ export class ThanksPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ThanksPage');
-  }
-
   fnFinish() {
     this.navCtrl.popToRoot()
   }

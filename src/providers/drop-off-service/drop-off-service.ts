@@ -14,7 +14,6 @@ import 'rxjs/add/operator/map';
 export class DropOffServiceProvider {
 
   constructor(public http: Http) {
-    console.log('Hello DropOffServiceProvider Provider');
   }
 
   checkDropOffCode(code): Observable<any> {

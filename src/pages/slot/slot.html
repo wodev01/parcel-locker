@@ -6,19 +6,19 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding margin-vertical>
+<ion-content padding margin-vertical *ngIf="slot._id">
 
-  <h1 ion-text text-center>Please deposit your item to Slot A2.</h1>
+  <h1 ion-text text-center>Please deposit your item to Slot  #{{fnZeroFill(slot.slotNumber, 3)}}.</h1>
   <h1 ion-text text-center>Please, close the door when finished.</h1>
 
   <ion-grid>
     <ion-row margin-vertical>
       <ion-col col-12 text-center>
         <ion-buttons text-uppercase float-start>
-          <button ion-button large color="danger" (click)="fnAllowcateSlot()">Cancel</button>
+          <button ion-button large color="danger" (click)="fnCancelSlot()">Cancel</button>
         </ion-buttons>
         <ion-buttons text-uppercase float-end>
-          <button ion-button large (click)="fnAllowcateSlot()">Continue</button>
+          <button ion-button large (click)="fnAllocateSlot(slot)">Continue</button>
         </ion-buttons>
       </ion-col>
     </ion-row>

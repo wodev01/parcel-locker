@@ -15,20 +15,21 @@ export class DropOffCopyServiceProvider {
 
   constructor(public http: Http,
               private storage: Storage) {
-    console.log('Hello DropOffCopyServiceProvider Provider');
   }
 
-  createAuthorizationHeader(headers: Headers) {
-    headers.append('Authorization', 'Bearer ' + this.storage.get('AUTH_TOKEN'));
+  getApiToken(): Observable<Headers> {
+    return Observable.fromPromise(this.storage.get('AUTH_TOKEN'));
   }
 
   updateSlot(slotId): Observable<any> {
     const headers = new Headers();
-    this.createAuthorizationHeader(headers);
-    return this.http
-      .put('http://ec2-34-231-237-69.compute-1.amazonaws.com:3000/api/slots/' + slotId + '/allocate', null, {headers: headers})
-      .map((response: Response) => response.json())
-      .catch((error: any) => Observable.throw(error.json() || 'Server error'));
+    return this.getApiToken().flatMap(data => {
+      headers.append('Authorization', 'Bearer ' + data);
+      return this.http
+        .put('http://ec2-34-231-237-69.compute-1.amazonaws.com:3000/api/slots/' + slotId + '/allocate', null, {headers: headers})
+        .map((response: Response) => response.json())
+        .catch((error: any) => Observable.throw(error.json() || 'Server error'));
+    })
   }
 
 }

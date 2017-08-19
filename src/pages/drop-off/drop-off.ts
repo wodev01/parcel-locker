@@ -25,10 +25,6 @@ export class DropOffPage {
               private storage: Storage) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad DropOffPage');
-  }
-
   presentToast(msg, className) {
     this.toast = this.toastCtrl.create({
       message: msg,
@@ -36,10 +32,6 @@ export class DropOffPage {
       showCloseButton: true,
       closeButtonText: 'Close',
       cssClass: className
-    });
-
-    this.toast.onDidDismiss(() => {
-      console.log('Dismissed toast');
     });
 
     this.toast.present();
@@ -50,9 +42,7 @@ export class DropOffPage {
     this.loading = this.loadingCtrl.create({
       content: 'Please wait...'
     });
-
     this.loading.present();
-
   }
 
   fnCheckDropOffCode(dropOffCode) {
@@ -61,15 +51,14 @@ export class DropOffPage {
     if (this.toast) {
       this.toast.dismiss();
     }
-
-    console.info("Sending API call with drop off code for check Drop Off code in database");
+    console.info('%c Sending API call with drop off code for check Drop Off code in database', 'background: #2B65EC; color: #ffffff');
     this.dropOffService.checkDropOffCode(dropOffCode)
       .subscribe(
         data => {
           this.storage.set('AUTH_TOKEN', data.token);
           this.isCodeChecking = false;
           this.loading.dismiss();
-          console.info("Drop off code successfully Found and create auth token");
+          console.info('%c Drop off code successfully Found and create auth token', 'background: #2B65EC; color: #ffffff');
           this.navCtrl.push(DropScanLabelPage);
         },
         error => {
