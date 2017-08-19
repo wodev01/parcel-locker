@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>
+      Welcome to ParcelPort
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding margin-vertical>
+
+  <h1 ion-text text-center>What would you like to do?</h1>
+
+  <ion-grid>
+    <ion-row margin-vertical>
+      <ion-col col-12 col-sm-9 col-md-6 text-center col-sm>
+        <ion-buttons text-uppercase>
+          <button ion-button large (click)="fnGoToDropOff()">Drop off</button>
+        </ion-buttons>
+      </ion-col>
+      <ion-col col-12 col-sm-9 col-md-6 text-center >
+        <ion-buttons text-uppercase>
+          <button ion-button large>Pickup</button>
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

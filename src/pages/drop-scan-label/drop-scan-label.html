@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>
+      Scan Label
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding margin-vertical>
+
+  <h1 ion-text text-center>Scan shipping label (Carriers only)</h1>
+
+  <ion-grid>
+    <ion-row margin-vertical>
+      <ion-col col-12 text-center>
+        <ion-item>
+          <ion-input text-center type="tel" placeholder="Or enter Tracking#" [(ngModel)]="scanLabel.code"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-12>
+        <ion-buttons text-uppercase float-end>
+          <button ion-button large (click)="fnCheckScanCode(scanLabel)">Continue</button>
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

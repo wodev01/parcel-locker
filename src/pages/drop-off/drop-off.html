@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>
+      Drop Off
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding margin-vertical>
+
+  <h1 ion-text text-center>Scan or enter drop-off code</h1>
+
+  <ion-grid>
+    <ion-row margin-vertical>
+      <ion-col col-12 text-center>
+        <ion-item>
+          <ion-input text-center type="tel" placeholder="Enter your code here" [(ngModel)]="dropOff.code"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-12>
+        <ion-buttons text-uppercase float-end>
+          <button ion-button large (click)="fnCheckDropOffCode(dropOff)">Continue</button>
+
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
