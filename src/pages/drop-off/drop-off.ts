@@ -40,7 +40,7 @@ export class DropOffPage {
 
   presentLoadingDefault() {
     this.loading = this.loadingCtrl.create({
-      content: 'Please wait...'
+      content: 'Please wait...  Sending API call with drop off code for check Drop Off code in database'
     });
     this.loading.present();
   }
@@ -59,6 +59,7 @@ export class DropOffPage {
           this.isCodeChecking = false;
           this.loading.dismiss();
           console.info('%c Drop off code successfully Found and create auth token', 'background: #2B65EC; color: #ffffff');
+          this.presentToast('Drop off code successfully Found and create auth token', 'toast-info');
           this.navCtrl.push(DropScanLabelPage);
         },
         error => {

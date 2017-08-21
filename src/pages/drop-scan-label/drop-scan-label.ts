@@ -47,7 +47,7 @@ export class DropScanLabelPage {
 
   presentLoadingDefault() {
     this.loading = this.loadingCtrl.create({
-      content: 'Please wait...'
+      content: 'Please wait...  Sending API call with scan label code for check parcel is available with scan label in database'
     });
 
     this.loading.present();
@@ -64,10 +64,11 @@ export class DropScanLabelPage {
       .subscribe(
         data => {
           this.storage.set('SLOT', JSON.stringify(data.slot));
-          console.info('%c Scan code successfully check and Slot ' + data.slot.slotNumber + 'Found and Store slot information', 'background: #2B65EC; color: #ffffff');
+          console.info('%c Scan code successfully check and Slot ' + data.slot.slotNumber + ' Found and Store slot information', 'background: #2B65EC; color: #ffffff');
           this.isCodeChecking = false;
           this.loading.dismiss();
           console.info('%c Door Open for slot ' + data.slot.slotNumber + '.', 'background: #2B65EC; color: #ffffff');
+          this.presentToast(' Scan code successfully check. Slot ' + data.slot.slotNumber + ' Found and Store slot information. Door Open for slot ' + data.slot.slotNumber + '.', 'toast-info');
           this.navCtrl.push(SlotPage);
         },
         error => {

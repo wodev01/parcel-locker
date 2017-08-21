@@ -55,7 +55,7 @@ export class SlotPage {
 
   presentLoadingDefault() {
     this.loading = this.loadingCtrl.create({
-      content: 'Please wait...'
+      content: 'Please wait... Sending API call with slot id for Slot allocation'
     });
     this.loading.present();
   }
@@ -73,7 +73,8 @@ export class SlotPage {
           data => {
             this.isCodeChecking = false;
             this.loading.dismiss();
-            console.info('%c Slot ' + this.slot.slotNumber + 'Allocate and available slot number decrease in location', 'background: #2B65EC; color: #ffffff');
+            console.info('%c Slot ' + this.slot.slotNumber + ' Allocate and available slot number decrease in location', 'background: #2B65EC; color: #ffffff');
+            this.presentToast('Slot ' + this.slot.slotNumber + ' Allocate and available slot number decrease in location', 'toast-info');
             this.navCtrl.push(ThanksPage);
           },
           error => {
