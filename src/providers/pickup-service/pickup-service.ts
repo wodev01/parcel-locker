@@ -4,22 +4,16 @@ import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import {ENV} from "../../config";
 
-
-/*
- Generated class for the DropOffServiceProvider provider.
-
- See https://angular.io/docs/ts/latest/guide/dependency-injection.html
- for more info on providers and Angular DI.
- */
 @Injectable()
-export class DropOffServiceProvider {
+export class PickupServiceProvider {
 
   constructor(public http: Http) {
+    console.log('Hello PickupServiceProvider Provider');
   }
 
-  checkDropOffCode(code): Observable<any> {
+  checkPickup(code): Observable<any> {
     return this.http
-      .post(ENV.API_URL + '/api/drop-off/scan-code', code)
+      .post(ENV.API_URL + '/api/pickup/scan-code', code)
       .map((response: Response) => response.json())
       .catch((error: any) => Observable.throw(error.json() || 'Server error'));
   }

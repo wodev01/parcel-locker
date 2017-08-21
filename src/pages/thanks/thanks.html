@@ -11,6 +11,16 @@
   <h1 ion-text text-center>Item accepted!</h1>
   <h1 ion-text text-center>Thank you for using ParcelPort!</h1>
 
+  <ion-card *ngIf="pickupCode">
+    <ion-card-header  color="secondary">
+      Info!
+    </ion-card-header>
+    <ion-card-content text-center>
+      <h2>This is just for demo use. You can use this pickup code for pick up parcel</h2>
+      <h1 ion-text text-center>{{pickupCode}}</h1>
+    </ion-card-content>
+  </ion-card>
+
   <ion-grid>
     <ion-row margin-vertical>
       <ion-col col-12 text-center>

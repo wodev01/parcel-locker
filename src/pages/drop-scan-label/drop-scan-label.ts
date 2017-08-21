@@ -63,6 +63,7 @@ export class DropScanLabelPage {
     this.scanLabelService.getLabel(scanLabelCode)
       .subscribe(
         data => {
+          data.slot.shipmentId =  data.shipment.id;
           this.storage.set('SLOT', JSON.stringify(data.slot));
           console.info('%c Scan code successfully check and Slot ' + data.slot.slotNumber + ' Found and Store slot information', 'background: #2B65EC; color: #ffffff');
           this.isCodeChecking = false;

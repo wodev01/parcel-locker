@@ -16,6 +16,9 @@ import {ThanksPage} from "../pages/thanks/thanks";
 import { DropOffCopyServiceProvider } from '../providers/drop-off-copy-service/drop-off-copy-service';
 import { DropScanLabelServiceProvider } from '../providers/drop-scan-label-service/drop-scan-label-service';
 import { DropOffServiceProvider } from '../providers/drop-off-service/drop-off-service';
+import { PickupServiceProvider } from '../providers/pickup-service/pickup-service';
+import {PickupPage} from "../pages/pickup/pickup";
+import {PickupFromSlotPage} from "../pages/pickup-from-slot/pickup-from-slot";
 
 @NgModule({
   declarations: [
@@ -24,7 +27,9 @@ import { DropOffServiceProvider } from '../providers/drop-off-service/drop-off-s
     DropOffPage,
     DropScanLabelPage,
     SlotPage,
-    ThanksPage
+    ThanksPage,
+    PickupPage,
+    PickupFromSlotPage
   ],
   imports: [
     BrowserModule,
@@ -39,7 +44,9 @@ import { DropOffServiceProvider } from '../providers/drop-off-service/drop-off-s
     DropOffPage,
     DropScanLabelPage,
     SlotPage,
-    ThanksPage
+    ThanksPage,
+    PickupPage,
+    PickupFromSlotPage
   ],
   providers: [
     StatusBar,
@@ -48,7 +55,8 @@ import { DropOffServiceProvider } from '../providers/drop-off-service/drop-off-s
     SQLite,
     DropOffCopyServiceProvider,
     DropScanLabelServiceProvider,
-    DropOffServiceProvider
+    DropOffServiceProvider,
+    PickupServiceProvider
   ]
 })
 export class AppModule {}

@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {Storage} from '@ionic/storage';
 
 /**
  * Generated class for the ThanksPage page.
@@ -14,8 +15,17 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
   templateUrl: 'thanks.html',
 })
 export class ThanksPage {
+  pickupCode: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              private storage: Storage) {
+  }
+
+  ionViewDidLoad() {
+    this.storage.get('pickup').then((val) => {
+      this.pickupCode = val;
+    });
   }
 
   fnFinish() {

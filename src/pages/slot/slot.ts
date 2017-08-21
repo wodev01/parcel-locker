@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
-import {Storage} from '@ionic/storage';
 import {IonicPage, LoadingController, NavController, NavParams, ToastController} from 'ionic-angular';
+import {Storage} from '@ionic/storage';
 import {ThanksPage} from "../thanks/thanks";
 import {DropOffCopyServiceProvider} from "../../providers/drop-off-copy-service/drop-off-copy-service";
+
 
 /**
  * Generated class for the SlotPage page.
@@ -68,13 +69,15 @@ export class SlotPage {
     }
     console.info('%c Sending API call with slot id for Slot allocation', 'background: #2B65EC; color: #ffffff');
     if (slot._id) {
-      this.dropOffCopyService.updateSlot(slot._id)
+      this.dropOffCopyService.updateSlot(slot)
         .subscribe(
           data => {
             this.isCodeChecking = false;
             this.loading.dismiss();
             console.info('%c Slot ' + this.slot.slotNumber + ' Allocate and available slot number decrease in location', 'background: #2B65EC; color: #ffffff');
             this.presentToast('Slot ' + this.slot.slotNumber + ' Allocate and available slot number decrease in location', 'toast-info');
+            console.log(data)
+            this.storage.set('pickup', data.shipment.pickupCode);
             this.navCtrl.push(ThanksPage);
           },
           error => {

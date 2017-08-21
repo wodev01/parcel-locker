@@ -3,6 +3,7 @@ import {Storage} from '@ionic/storage';
 import {Http, Headers, Response} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
+import {ENV} from "../../config";
 
 
 /*
@@ -30,7 +31,7 @@ export class DropScanLabelServiceProvider {
     return this.getApiToken().flatMap(data => {
       headers.append('Authorization', 'Bearer ' + data);
       return this.http
-        .post('http://ec2-34-231-237-69.compute-1.amazonaws.com:3000/api/drop-off/scan-label', code, {headers: headers})
+        .post(ENV.API_URL + '/api/drop-off/scan-label', code, {headers: headers})
         .map((response: Response) => response.json())
         .catch((error: any) => Observable.throw(error.json() || 'Server error'));
     });

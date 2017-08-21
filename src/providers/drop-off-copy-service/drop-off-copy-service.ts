@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Storage} from '@ionic/storage';
-import {Http, Headers, RequestOptions, Response} from '@angular/http';
+import {Http, Headers, Response} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
+import {ENV} from "../../config";
 
 /*
  Generated class for the DropOffCopyServiceProvider provider.
@@ -21,12 +22,16 @@ export class DropOffCopyServiceProvider {
     return Observable.fromPromise(this.storage.get('AUTH_TOKEN'));
   }
 
-  updateSlot(slotId): Observable<any> {
+  updateSlot(slot): Observable<any> {
+    let slotId = slot._id;
+    let shipment = {
+      shipmentId: slot.shipmentId
+    };
     const headers = new Headers();
     return this.getApiToken().flatMap(data => {
       headers.append('Authorization', 'Bearer ' + data);
       return this.http
-        .put('http://ec2-34-231-237-69.compute-1.amazonaws.com:3000/api/slots/' + slotId + '/allocate', null, {headers: headers})
+        .put(ENV.API_URL + '/api/slots/' + slotId + '/allocate', shipment, {headers: headers})
         .map((response: Response) => response.json())
         .catch((error: any) => Observable.throw(error.json() || 'Server error'));
     })
