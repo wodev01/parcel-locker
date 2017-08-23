@@ -1,0 +1,73 @@
+<!--
+  Generated template for the ShipmentFormPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>
+      Create Shipment
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="fnLogOut()">
+        Logout
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <strong> Package: </strong>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Label</ion-label>
+      <ion-input type="text" [(ngModel)]="shipmentObj.label" [disabled]="true"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Select Size</ion-label>
+      <ion-select [(ngModel)]="shipmentObj.size" required>
+        <ion-option value="SMALL">SMALL</ion-option>
+        <ion-option value="MEDIUM">MEDIUM</ion-option>
+        <ion-option value="LARGE">LARGE</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <strong> Sender: </strong>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Select Sender</ion-label>
+      <ion-select [(ngModel)]="shipmentObj.sender" required>
+        <ion-option [value]="user" *ngFor="let user of userArr">{{user.email}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <strong> Recipient: </strong>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Name</ion-label>
+      <ion-input type="text" [(ngModel)]="shipmentObj.receiver.name" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="text" [(ngModel)]="shipmentObj.receiver.email" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Phone</ion-label>
+      <ion-input type="text" [(ngModel)]="shipmentObj.receiver.phone" required></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-col col-12 text-center>
+    <ion-buttons text-uppercase class="btn-large">
+      <button ion-button (click)="fnCreateShipment(shipmentObj)">Create Shipment</button>
+    </ion-buttons>
+  </ion-col>
+</ion-content>
+

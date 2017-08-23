@@ -4,13 +4,6 @@ import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import {ENV} from "../../config";
 
-
-/*
- Generated class for the DropOffServiceProvider provider.
-
- See https://angular.io/docs/ts/latest/guide/dependency-injection.html
- for more info on providers and Angular DI.
- */
 @Injectable()
 export class DropOffServiceProvider {
 

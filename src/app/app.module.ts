@@ -19,6 +19,12 @@ import { DropOffServiceProvider } from '../providers/drop-off-service/drop-off-s
 import { PickupServiceProvider } from '../providers/pickup-service/pickup-service';
 import {PickupPage} from "../pages/pickup/pickup";
 import {PickupFromSlotPage} from "../pages/pickup-from-slot/pickup-from-slot";
+import { AuthProvider } from '../providers/auth/auth';
+import {LoginPage} from "../pages/login/login";
+import {ShipmentListPage} from "../pages/shipment-list/shipment-list";
+import {ShipmentFormPage} from "../pages/shipment-form/shipment-form";
+import { UserProvider } from '../providers/user/user';
+import { ShipmentProvider } from '../providers/shipment/shipment';
 
 @NgModule({
   declarations: [
@@ -29,7 +35,10 @@ import {PickupFromSlotPage} from "../pages/pickup-from-slot/pickup-from-slot";
     SlotPage,
     ThanksPage,
     PickupPage,
-    PickupFromSlotPage
+    PickupFromSlotPage,
+    LoginPage,
+    ShipmentListPage,
+    ShipmentFormPage
   ],
   imports: [
     BrowserModule,
@@ -46,7 +55,10 @@ import {PickupFromSlotPage} from "../pages/pickup-from-slot/pickup-from-slot";
     SlotPage,
     ThanksPage,
     PickupPage,
-    PickupFromSlotPage
+    PickupFromSlotPage,
+    LoginPage,
+    ShipmentListPage,
+    ShipmentFormPage
   ],
   providers: [
     StatusBar,
@@ -56,7 +68,10 @@ import {PickupFromSlotPage} from "../pages/pickup-from-slot/pickup-from-slot";
     DropOffCopyServiceProvider,
     DropScanLabelServiceProvider,
     DropOffServiceProvider,
-    PickupServiceProvider
+    PickupServiceProvider,
+    AuthProvider,
+    UserProvider,
+    ShipmentProvider
   ]
 })
 export class AppModule {}

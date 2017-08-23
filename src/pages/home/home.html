@@ -12,16 +12,24 @@
 
   <ion-grid>
     <ion-row margin-vertical>
-      <ion-col col-12 col-sm-9 col-md-6 text-center col-sm>
-        <ion-buttons text-uppercase>
+      <ion-col col-12 col-md-4 text-center col-sm>
+        <ion-buttons text-uppercase class="btn-large">
           <button ion-button large (click)="fnGoTo('dropOff')">Drop off</button>
         </ion-buttons>
       </ion-col>
-      <ion-col col-12 col-sm-9 col-md-6 text-center >
-        <ion-buttons text-uppercase>
+
+      <ion-col col-12 col-md-4 text-center >
+        <ion-buttons text-uppercase class="btn-large">
           <button ion-button large (click)="fnGoTo('pickup')">Pickup</button>
         </ion-buttons>
       </ion-col>
+
+      <ion-col col-12 col-md-4 text-center >
+        <ion-buttons text-uppercase class="btn-large">
+          <button ion-button large (click)="fnGoTo('admin')">Admin</button>
+        </ion-buttons>
+      </ion-col>
+
     </ion-row>
   </ion-grid>
 </ion-content>

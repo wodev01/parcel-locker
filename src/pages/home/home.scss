@@ -1,7 +1,9 @@
 page-home {
-  button {
-    padding: 100px !important;
-    font-style: italic;
-    width: 50%;
+  .btn-large {
+    button {
+      padding: 80px !important;
+      font-style: italic;
+      width: 50%;
+    }
   }
 }

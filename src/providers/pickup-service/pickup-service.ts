@@ -15,6 +15,11 @@ export class PickupServiceProvider {
     return this.http
       .post(ENV.API_URL + '/api/pickup/scan-code', code)
       .map((response: Response) => response.json())
-      .catch((error: any) => Observable.throw(error.json() || 'Server error'));
+      .catch((error: any) => {
+        if (error.status === 401) {
+          error._body = {message: 'Please logout and try again'}
+        }
+        return Observable.throw(error.json() || 'Server error')
+      });
   }
 }
